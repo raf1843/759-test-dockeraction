@@ -1,0 +1,1 @@
+Follows the [GitHub Docker container action tutorial](https://docs.github.com/en/actions/tutorials/use-containerized-services/create-a-docker-container-action) to create a Docker action for testing purposes

@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: 759-test-dockeraction/hello-world-docker-action
+        uses: ./
         with:
           who-to-greet: 'CSEC-759'
       # Use the output from the `hello` step

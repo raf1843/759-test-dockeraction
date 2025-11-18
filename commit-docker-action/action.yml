@@ -2,13 +2,21 @@
 name: 'Commit'
 description: 'Display commit info'
 inputs:
+  commit-message:
+    description: 'Commit message'
+    required: true
+    default: 'nothing'
+  commit-author:
+    description: 'Commit author'
+    required: true
+    default: 'someone'
 outputs:
-  time: # id of output
+  time:
     description: 'Time of display'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ github.event.head_commit.author.name }}
-    - ${{ github.event.head_commit.message }}
+    - ${{ inputs.commit-author }}
+    - ${{ inputs.commit-message }}
 

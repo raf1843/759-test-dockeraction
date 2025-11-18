@@ -23,6 +23,9 @@ jobs:
       - name: Commit action step
         id: commit
         uses: ./commit-docker-action
+        with:
+          commit-message: ${{ github.event.head_commit.message }}
+          commit-author: ${{ github.event.head_commit.author.name }}
       - name: Get the output time
         run: echo "The time was ${{ steps.commit.outputs.time }}"
 

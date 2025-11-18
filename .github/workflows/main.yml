@@ -1,31 +1,19 @@
 on: [push]
 
 jobs:
-  hello_world_job:
-    runs-on: ubuntu-latest
-    name: A job to say hello
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-      - name: Hello world action step
-        id: hello
-        uses: ./hello-world-docker-action
-        with:
-          who-to-greet: 'CSEC-759'
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
   commit_job:
     runs-on: ubuntu-latest
-    name: Commit info job
+    name: Commit Info
     steps:
+      # Checks out the repository for the action
       - name: Checkout
         uses: actions/checkout@v5
+      # Runs the 'Commit' Docker action
       - name: Commit action step
         id: commit
+        # References action in current repository
         uses: ./commit-docker-action
         with:
+          # Potential taint sources
           commit-message: ${{ github.event.head_commit.message }}
           commit-author: ${{ github.event.head_commit.author.name }}
-      - name: Get the output time
-        run: echo "The time was ${{ steps.commit.outputs.time }}"
-

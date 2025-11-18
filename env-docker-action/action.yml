@@ -1,0 +1,20 @@
+# commit-docker-action/action.yml
+name: 'Commit'
+description: 'Display commit info'
+inputs:
+  # Can be set by workflows via with:
+  commit-message:
+    description: 'Commit message'
+    required: true
+    default: 'nothing'
+  commit-author:
+    description: 'Commit author'
+    required: true
+    default: 'someone'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  # Passed to Dockerfile's entrypoint as arguments
+  args:
+    - ${{ inputs.commit-author }}
+    - ${{ inputs.commit-message }}

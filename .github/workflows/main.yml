@@ -12,6 +12,17 @@ jobs:
         uses: ./hello-world-docker-action
         with:
           who-to-greet: 'CSEC-759'
-      # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
+  commit_job:
+    runs-on: ubuntu-latest
+    name: Commit info job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Commit action step
+        id: commit
+        uses: ./commit-docker-action
+      - name: Get the output time
+        run: echo "The time was ${{ steps.commit.outputs.time }}"
+

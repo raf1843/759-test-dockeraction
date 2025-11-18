@@ -1,0 +1,14 @@
+# action.yml
+name: 'Commit'
+description: 'Display commit info'
+inputs:
+outputs:
+  time: # id of output
+    description: 'Time of display'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ github.event.head_commit.author.name }}
+    - ${{ github.event.head_commit.message }}
+

@@ -1,10 +1,8 @@
 # Container image that runs your code
 FROM alpine:3.10
 
-ARG COMMIT_AUTHOR
 ARG COMMIT_MESSAGE
 
-ENV COMMIT_AUTHOR=$COMMIT_AUTHOR
 ENV COMMIT_MESSAGE=$COMMIT_MESSAGE
 
 # Copies your code file from your action repository to the filesystem path `/` of the container

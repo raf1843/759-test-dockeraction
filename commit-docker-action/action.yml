@@ -11,6 +11,9 @@ inputs:
     description: 'Commit author'
     required: true
     default: 'someone'
+outputs:
+  time:
+    description: 'Time this action was run'
 runs:
   using: 'docker'
   image: 'Dockerfile'

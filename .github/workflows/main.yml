@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
       # Runs the 'Commit' Docker action
-      - name: Commit action step
+      - name: Commit action
         id: commit
         # References action in current repository
         uses: ./commit-docker-action
@@ -19,3 +19,6 @@ jobs:
           # Potential taint sources
           commit-message: ${{ github.event.head_commit.message }}
           commit-author: ${{ github.event.head_commit.author.name }}
+      # Gets the time from entrypoint.sh
+      - name: Get output time
+        run: echo "The time was ${{ steps.commit.outputs.time }}"
